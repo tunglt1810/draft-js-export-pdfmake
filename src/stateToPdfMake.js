@@ -26,7 +26,7 @@ const FONT_FAMILYS = [
     {name: 'fontfamily-Arial CE', family: 'Arial CE'},
     {name: 'fontfamily-Georgia', family: 'Georgia'},
     {name: 'fontfamily-Tahoma', family: 'Tahoma'},
-    {name: 'fontfamily-Time New Roman', family: 'Time New Roman'},
+    {name: 'fontfamily-Times New Roman', family: 'Times New Roman'},
     {name: 'fontfamily-Consolas', family: 'Consolas'},
     {name: 'fontfamily-Calibri', family: 'Calibri'}
 ];
@@ -137,6 +137,12 @@ class StateToPdfMake {
         }
 
         const ranges = getEntityRanges(block.getText(), block.getCharacterList());
+        const data = block.getData();
+        let alignment;
+        if (data.size > 0) {
+            alignment = data.get('text-align');
+        }
+        // console.log(data.size, data.has('text-align'));
 
         return ranges.reduce((acc, [entityKey, stylePieces]) => {
             acc.push(
@@ -147,9 +153,11 @@ class StateToPdfMake {
                         italics: style.has(ITALIC),
                         decoration: this._getTextDecorations(style),
                         fontSize: this._getFontSize(style),
-                        font: this._getFontFamily(style)
+                        font: this._getFontFamily(style),
+                        alignment
                     };
-                }).filter((properties) => properties.text !== ' ')
+                })
+                // .filter((properties) => properties.text !== ' ')
             );
 
             return acc;
