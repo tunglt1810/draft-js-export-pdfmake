@@ -1,7 +1,7 @@
 {
   "name": "draft-js-export-pdfmake",
   "description": "DraftJs: Export ContentState to PdfMake",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "main": "./lib/stateToPdfMake.js",
   "author": {
     "name": "Datagenno Interactive Research",
@@ -27,7 +27,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/datagenno/draft-js-export-pdfmake.git"
+    "url": "git+https://github.com/tunglt1810/draft-js-export-pdfmake.git"
   },
   "devDependencies": {
     "babel-cli": "6.24.1",
