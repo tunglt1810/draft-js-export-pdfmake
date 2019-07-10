@@ -39,14 +39,17 @@ class StateToPdfMake {
         this.blocks = null;
         this.listOlAcc = [];
         this.listUlAcc = [];
+        this.defaultFontFamily = 'Time New Roman';
     }
 
-    generate() {
+    generate(defaultFontFamily) {
         this.blocks = this.contentState.getBlockMap().toArray();
 
         while (this.currentBlock < this.blocks.length) {
             this._processBlock();
         }
+
+        if (defaultFontFamily) this.defaultFontFamily = defaultFontFamily;
 
         return this.output;
     }
@@ -179,9 +182,14 @@ class StateToPdfMake {
     }
 
     _getFontFamily(style) {
+        let fontFamily;
         for (let fontStyle of FONT_FAMILYS) {
-            if (style.has(fontStyle.name)) return fontStyle.family;
+            if (style.has(fontStyle.name)) {
+                fontFamily = fontStyle.family;
+                break;
+            }
         }
+        return fontFamily ? fontFamily : this.defaultFontFamily;
     }
 
     _updateAndResetUlList() {
