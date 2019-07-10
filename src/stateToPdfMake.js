@@ -39,17 +39,17 @@ class StateToPdfMake {
         this.blocks = null;
         this.listOlAcc = [];
         this.listUlAcc = [];
-        this.defaultFontFamily = 'Time New Roman';
+        // this.defaultFontFamily = 'Time New Roman';
     }
 
-    generate(defaultFontFamily) {
+    generate() {
         this.blocks = this.contentState.getBlockMap().toArray();
 
         while (this.currentBlock < this.blocks.length) {
             this._processBlock();
         }
 
-        if (defaultFontFamily) this.defaultFontFamily = defaultFontFamily;
+        // if (defaultFontFamily) this.defaultFontFamily = defaultFontFamily;
 
         return this.output;
     }
@@ -197,7 +197,7 @@ class StateToPdfMake {
                 break;
             }
         }
-        return fontFamily ? fontFamily : this.defaultFontFamily;
+        return fontFamily;
     }
 
     _updateAndResetUlList() {
