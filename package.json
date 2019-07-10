@@ -31,7 +31,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/datagenno/draft-js-export-pdfmake.git"
+    "url": "git+https://github.com/tunglt1810/draft-js-export-pdfmake.git"
   },
   "devDependencies": {
     "babel-cli": "6.24.1",
